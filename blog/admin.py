@@ -1,6 +1,6 @@
 from django.contrib import admin
 from blog.models import (
-KategoriModel, YazilarModel, YorumModel
+KategoriModel, YazilarModel, YorumModel, IletisimModel
 )
 
 
@@ -22,3 +22,11 @@ class YorumAdmin(admin.ModelAdmin):
 
 
 admin.site.register(YorumModel, YorumAdmin)
+
+
+class IletisimAdmin(admin.ModelAdmin):
+    search_fields = ('email',)
+    list_display = ('email', 'olusturulma_tarihi')
+
+
+admin.site.register(IletisimModel,IletisimAdmin)
