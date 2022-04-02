@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
 
-class YazilarModeli(models.Model):
+class YazilarModel(models.Model):
     resim = models.ImageField(upload_to='yazi_resimleri')
     baslik = models.CharField(max_length=50)
-    icerik =RichTextField()
+    icerik = RichTextField()
     olusturulma_tarihi = models.DateTimeField(auto_now_add=True)
     duzenlenme_tarihi = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from='baslik', unique=True)

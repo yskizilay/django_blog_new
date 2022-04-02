@@ -1,6 +1,8 @@
 from django.contrib import admin
-from blog.models import KategoriModel
-from blog.models.yazi import YazilarModeli
+from blog.models import (
+KategoriModel, YazilarModel, YorumModel
+)
+
 
 admin.site.register(KategoriModel)
 
@@ -11,6 +13,12 @@ class YazilarAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(YazilarModeli,YazilarAdmin)
+admin.site.register(YazilarModel,YazilarAdmin)
 
-# Register your models here.
+class YorumAdmin(admin.ModelAdmin):
+    search_fields = ('yazan__username',)
+    list_display = ('yazan', 'olusturulma_tarihi', 'guncellenme_tarihi')
+    
+
+
+admin.site.register(YorumModel, YorumAdmin)
