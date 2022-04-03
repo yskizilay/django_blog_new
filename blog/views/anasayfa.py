@@ -15,7 +15,7 @@ def anasayfa(request):
         ).distinct()
 
     sayfa = request.GET.get('sayfa')
-    paginator = Paginator(yazilar, 1)
+    paginator = Paginator(yazilar, 4)
 
     return render(request, 'pages/anasayfa.html', context = {
         'yazilar': paginator.get_page(sayfa)
