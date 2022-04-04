@@ -19,6 +19,7 @@
           </a></h6>
           <p class="card-text">{{ yazi.icerik|safe|truncatechars_html:80 }}</p>
           <p class="card-text"><small class="text-muted">{{ yazi.duzenlenme_tarihi|timesince }}</small></p>
+          <p class="card-text"><small class="text-muted">Yazar: {{ yazi.yazar }}</small></p>
         </div>
       </div>
     </div>
