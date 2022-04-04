@@ -1,12 +1,13 @@
 <div class="col-sm-3">
     <div class="card mb-3">
+      {% if request.user.is_authenticated %}
         <div class="card-header">
-          Menü
+          Hoşgeldiniz: {{ request.user }}
         </div>
-        {% if request.user.is_authenticated %}
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Profil Düzenle</li>
-          <li class="list-group-item">Şifre Değiştir</li>
+          <li class="list-group-item">
+            <a href="{% url 'sifre-degistir' %}">Şifre Değiştir</a></li>
           <li class="list-group-item">
             <a href="{% url 'yazi-ekle' %}">Yazi Ekle</a></li>
           <li class="list-group-item">
@@ -16,6 +17,9 @@
 
         </ul>
         {% else %}
+        <div class="card-header">
+        Kayıt Ol 
+        </div>
         Login formu gelecek
         {% endif%}
         </ul>
