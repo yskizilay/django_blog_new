@@ -18,7 +18,7 @@
 {% for yazi in yazilar %}
       <tr>
         <th scope="row">{{ yazi.id }}</th>
-        <td>{{ yazi.baslik }}</td>
+        <td><a href="{% url 'detay' slug=yazi.slug %}" >{{ yazi.baslik }}</a></td>
         <td>{{ yazi.duzenlenme_tarihi }}</td>
         <td>
           <p>

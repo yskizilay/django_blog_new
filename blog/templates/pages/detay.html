@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title%} {{yazi.baslik}} {% endblock %}
 
 {% block content %} 
@@ -30,6 +31,15 @@
     </div>
   </div>
 <h5>Yorumlar</h5>
+{% if request.user.is_authenticated %}
+<form method="POST">
+  {% csrf_token %} 
+  {{ yorum_ekle_form|crispy }}
+  <input type ="submit" value="Yorum Yap" class="btn btn-danger mt-3 mb-3"/>
+</form>
+{% else %}
+<p>Yorum yapmak için lütfen üye girişi yapınız.</p>
+{% endif %}
 
 {% for yorum in yorumlar %}
 <div class="card">
