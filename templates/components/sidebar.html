@@ -1,6 +1,5 @@
 <div class="col-sm-3">
     <div class="card mb-3">
-      {% if request.user.is_authenticated %}
         <div class="card-header">
           Hoşgeldiniz: {{ request.user }}
         </div>
@@ -15,14 +14,6 @@
             <a href="{% url 'yazilarim' %}">Yazılarım</a></li>
           <li class="list-group-item">
             <a href="{% url 'cikis' %}">Çıkış</a></li>
-
-        </ul>
-        {% else %}
-        <div class="card-header">
-        Kayıt Ol 
-        </div>
-        Login formu gelecek
-        {% endif%}
         </ul>
       </div>
 </div>
