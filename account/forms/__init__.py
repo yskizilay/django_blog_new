@@ -1,0 +1,1 @@
+from .profil_düzenleme import ProfilDuzenlemeForm
