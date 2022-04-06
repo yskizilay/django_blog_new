@@ -3,13 +3,16 @@
 from pathlib import Path
 import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+import environ
+env = environ.Env()
 
-SECRET_KEY = 'django-insecure-618*!hpog06^j$yt6p#%-yx!+8ekr*zedu0ni_+_3@(dajj%tz'
 
-DEBUG = True
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-ALLOWED_HOSTS = []
+environ.Env.read_env(BASE_DIR,'.env')
+
+SECRET_KEY = env('SECRET_KEY')
+
 
 
 
@@ -58,34 +61,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
 
 
 # Internationalization
@@ -120,3 +95,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL='/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_PORT=587
+DEFAUL_FROM_EMAIL = 'yskizilay5858@gmail.com'
+EMAIL_HOST_USER = 'yskizilay5858@gmail.com'
+EMAIL_HOST_PASSWORD= env('EMAIL_PASSWORD')

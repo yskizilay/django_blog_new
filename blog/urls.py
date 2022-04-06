@@ -11,6 +11,10 @@ urlpatterns = [
         template_name='pages/hakkimda.html'
     ), name='hakkimda'),
 
+    path('email-gonderildi', TemplateView.as_view(
+        template_name= 'pages/email-gonderildi.html'
+    ), name='email-gonderildi'),
+
     path('yonlendir', RedirectView.as_view(
         url='https:/www.google.com'
     ), name='yonlendir'),
