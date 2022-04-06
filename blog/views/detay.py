@@ -3,6 +3,10 @@ from blog.models import YazilarModel
 from blog.forms import YorumEkleModelForm
 from django.views import View
 from django.contrib import messages
+import logging
+
+logger = logging.getLogger('konu_okuma')
+
 
 class DetayView(View):
     http_method_name = ['get', 'post']
@@ -10,6 +14,9 @@ class DetayView(View):
 
     def get(self, request, slug):
         yazi = get_object_or_404(YazilarModel, slug=slug)
+
+        logger.info('konu okundu:' + request.user.username)
+
         yorumlar = yazi.yorumlar.all()
         return render(request, 'pages/detay.html', context={
             'yazi': yazi, 
