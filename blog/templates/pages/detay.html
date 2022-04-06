@@ -17,7 +17,8 @@
           <p class="card-text">{{ yazi.icerik|safe }}</p>
           <p class="card-text">
             <small class="text-muted">{{ yazi.duzenlenme_tarihi|timesince }}</small>
-            <p class="card-text"><small class="text-muted">Yazar: {{ yazi.yazar }}</small></p>
+            <p class="card-text"><small class="text-muted">
+              Yazar: <a href="{% url 'profil' username=yazi.yazar.username %}"> {{ yazi.yazar.username }} </a></small></p>
             {% if request.user == yazi.yazar%}
             <p>
               <a class="btn btn-primary" href="{% url 'yazi-guncelle' slug=yazi.slug %}"> Düzenle</a>
